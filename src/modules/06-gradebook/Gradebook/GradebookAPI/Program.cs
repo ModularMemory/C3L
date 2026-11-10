@@ -1,20 +1,24 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Register controller support
+// Add services to the container.
+
 builder.Services.AddControllers();
+
+// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
-// Enable controller routes
-app.MapControllers();
-
-// Health check endpoint
-app.MapGet("/health", () =>
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
 {
-    return Results.Ok(new
-    {
-        status = "Gradebook API running"
-    });
-});
+    app.MapOpenApi();
+}
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();
