@@ -2,9 +2,9 @@
 
 namespace GradebookAPI.Models
 {
-    public class GradeWeight
+    public class CategoryWeight
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string CourseId { get; set; } = string.Empty;
@@ -12,7 +12,8 @@ namespace GradebookAPI.Models
         [Required]
         public string Category { get; set; } = string.Empty;
 
-        [Range(0, 100)] // Weight percentage should be between 0 and 100. Total course weighting will be validated separately
+        // Weight percentage should be between 0 and 100. Total course weighting will be validated separately
+        [Range(0, 100)]
         public decimal WeightPercentage { get; set; }
     }
 }

@@ -5,17 +5,20 @@ namespace GradebookAPI.Models
 {
     public class Grade
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
+
+        // Initialize with an empty string to avoid null reference issues
+        [Required]
+        public string StudentId { get; set; } = string.Empty;
 
         [Required]
-        public string StudentId { get; set; } = string.Empty;   // Initialize with an empty string to avoid null reference issues
+        public Guid AssessmentId { get; set; }
 
-        [Range(1, int.MaxValue)]
-        public int AssessmentId { get; set; }
-
-        [Range(0, 100000)]  // Raw points earned by the student for the assessment, should be non-negative and can be arbitrarily large for practical purposes
+        // Raw points earned by the student for the assessment, should be non-negative and can be arbitrarily large for practical purposes
+        [Range(0, 100000)]
         public decimal Score { get; set; }
 
-        public DateTime? GradedAt { get; set; } // Maybe useful for sorting or filtering grades by date
+        // Maybe useful for sorting or filtering grades by date
+        public DateTimeOffset? GradedAt { get; set; }
     }
 }
