@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GradebookAPI.Controllers;
 
-public class GradesController : ApiController
+public class GradesController : V1ApiController
 {
     private readonly ILogger<GradesController> _logger;
 

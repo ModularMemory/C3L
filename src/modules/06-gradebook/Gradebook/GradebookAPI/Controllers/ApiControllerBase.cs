@@ -4,8 +4,7 @@ namespace GradebookAPI.Controllers;
 
 /// <summary>Abstract controller base with status code shorthands.</summary>
 [ApiController]
-[Route("[controller]/[action]")]
-public abstract class ApiController : ControllerBase
+public abstract class ApiControllerBase : ControllerBase
 {
     public IActionResult InternalServerError(object? value)
     {

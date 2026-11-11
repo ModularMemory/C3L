@@ -1,3 +1,5 @@
+### YamlMime:ManagedReference
+
 services:
   gradebook-api:
     build:
@@ -7,4 +9,4 @@ services:
       - "127.0.0.1:30600:8080"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ASPNETCORE_URLS: http://+:8080;http://+:8081
+      ASPNETCORE_URLS: http://+:8080
