@@ -10,3 +10,9 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__GradebookDatabase: Data Source=/app/data/gradebook.db
+    volumes:
+      - gradebook-data:/app/data
+
+volumes:
+  gradebook-data:
