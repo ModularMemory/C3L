@@ -1,17 +1,17 @@
 using GradebookAPI.Models;
+using GradebookAPI.Services.Interfaces;
 
 namespace GradebookAPI.Services
 {
-    public class GradeCalculationService
+    public class GradeCalculationService : IGradeCalculationService
     {
         // Calculate a student's percentage on one assessment
         public decimal CalculateAssessmentPercentage(Grade grade, Assessment assessment)
         {
-            if (grade == null)
-                throw new ArgumentNullException(nameof(grade));
 
-            if (assessment == null)
-                throw new ArgumentNullException(nameof(assessment));
+            ArgumentNullException.ThrowIfNull(grade);
+            
+            ArgumentNullException.ThrowIfNull(assessment);
 
             if (grade.AssessmentId != assessment.Id)
                 throw new ArgumentException("The grade does not belong to this assessment.");

@@ -1,5 +1,6 @@
 // ReSharper disable RedundantTypeArgumentsOfMethod
-
+using GradebookAPI.Services;
+using GradebookAPI.Services.Interfaces;
 namespace GradebookAPI;
 
 public static class Startup
@@ -10,6 +11,8 @@ public static class Startup
         {
             serviceCollection
                 .AddSingleton<TimeProvider>(TimeProvider.System);
+            serviceCollection
+                .AddScoped<IGradeCalculationService, GradeCalculationService>();
 
             return serviceCollection;
         }
