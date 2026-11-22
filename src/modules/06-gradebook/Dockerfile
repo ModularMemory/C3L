@@ -1,6 +1,11 @@
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
-USER $APP_UID
+
 WORKDIR /app
+
+# Create writable directory for the SQLite database.
+RUN mkdir -p /app/data && chown $APP_UID:$APP_UID /app/data
+
+USER $APP_UID
 EXPOSE 8080
 
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
