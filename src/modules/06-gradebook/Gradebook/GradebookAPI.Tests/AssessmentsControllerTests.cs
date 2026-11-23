@@ -40,7 +40,7 @@ public class AssessmentsControllerTests
         };
     }
     //
-    // Additional tests for Create and GetById methods
+    // Test cases for Create and GetById methods
     //
     [Fact]
     public async Task Create_ValidAssessment_ReturnsCreatedAndSaves()
@@ -163,7 +163,7 @@ public class AssessmentsControllerTests
         }
     }
     //
-    // Additional tests for GetByCourseId method
+    // Test cases for GetByCourseId method
     //
     [Fact]
     public async Task GetByCourseId_ExistingAssessments_ReturnsOnlyMatchingCourse()
@@ -248,7 +248,7 @@ public class AssessmentsControllerTests
         }
     }
     //
-    // Additional tests for Update method
+    // Test cases for Update method
     //
     [Fact]
     public async Task Update_ExistingAssessment_UpdatesAndSaves()
@@ -387,7 +387,7 @@ public class AssessmentsControllerTests
         }
     }
     //
-    // Additional tests for Delete method
+    // Test cases for Delete method
     //
     [Fact]
     public async Task Delete_ExistingAssessment_RemovesFromDatabase()
