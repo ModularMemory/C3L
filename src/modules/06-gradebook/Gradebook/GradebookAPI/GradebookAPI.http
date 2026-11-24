@@ -1,6 +1,36 @@
 @GradebookAPI_HostAddress = http://localhost:5049
 
-GET {{GradebookAPI_HostAddress}}/weatherforecast/
+### Get all Assessments by Course
+GET {{GradebookAPI_HostAddress}}/v1/Assessments/GetByCourseId?courseId=123456
 Accept: application/json
+
+### Create a new Assessment
+POST {{GradebookAPI_HostAddress}}/v1/Assessments/Create
+Accept: application/json
+Content-Type: application/json
+
+{
+  "CourseId": "123456",
+  "Title": "A new assessment",
+  "Category": "Test",
+  "MaxScore": 30,
+  "WeightPercentage": 30,
+  "DueDate": null
+}
+
+### Get all Grades by Course
+GET {{GradebookAPI_HostAddress}}/v1/Grades/GetByCourseId?courseId=12
+Accept: application/json
+
+### Create a new Grade
+POST {{GradebookAPI_HostAddress}}/v1/Grades/Create
+Accept: application/json
+Content-Type: application/json
+
+{
+    "StudentId": "123456",
+    "AssessmentId": "2307f294-03eb-4066-ba69-7afcdb593027",
+    "Score": 0
+}
 
 ###
