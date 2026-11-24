@@ -102,7 +102,7 @@ public class GradeCalculationService : IGradeCalculationService
                 continue;
             }
 
-            if (percentage < 0m || percentage > 100m)
+            if (percentage is < 0m or > 100m)
                 throw new ArgumentException("Category percentages must be between 0 and 100.");
 
             weightedTotal += percentage.Value * categoryWeight.WeightPercentage;

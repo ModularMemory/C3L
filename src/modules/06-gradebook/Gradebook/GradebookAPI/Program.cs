@@ -6,10 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.ConfigureServices(builder.Configuration);
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .ConfigureControllers();
 builder.Services.AddRazorPages();
-
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
@@ -25,6 +24,10 @@ using (var scope = app.Services.CreateScope())
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/openapi/v1.json", "Gradebook V1");
+    });
 }
 else
 {

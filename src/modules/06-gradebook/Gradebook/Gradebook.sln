@@ -7,7 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradebookAPI", "GradebookAP
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{03102164-BDAD-497B-81AB-610ADC944CD9}"
 	ProjectSection(SolutionItems) = preProject
-		compose.yaml = compose.yaml
+		..\docker-compose.yml = ..\docker-compose.yml
+		..\.dockerignore = ..\.dockerignore
+		..\.gitignore = ..\.gitignore
+		..\Dockerfile = ..\Dockerfile
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradebookAPI.Tests", "GradebookAPI.Tests\GradebookAPI.Tests.csproj", "{A077A25C-32F7-4FFD-866F-4C6616CC66C1}"

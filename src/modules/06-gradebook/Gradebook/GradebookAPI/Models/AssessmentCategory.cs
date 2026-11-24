@@ -1,8 +1,11 @@
+using System.Text.Json.Serialization;
+
 namespace GradebookAPI.Models;
 
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum AssessmentCategory
 {
-    Undefined,
+    Undefined = -1,
     Assignment,
     Test,
     Exam,
