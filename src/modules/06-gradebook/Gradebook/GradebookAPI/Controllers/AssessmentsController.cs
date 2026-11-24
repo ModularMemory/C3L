@@ -16,6 +16,7 @@ public class AssessmentsController : V1ApiController
     }
 
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(Assessment))]
     public async Task<IActionResult> Create(
         [FromBody] CreateAssessmentRequest request)
     {
@@ -57,6 +58,7 @@ public class AssessmentsController : V1ApiController
     }
 
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Assessment))]
     public async Task<IActionResult> GetById([FromQuery] Guid id)
     {
         if (id == Guid.Empty)
@@ -77,6 +79,7 @@ public class AssessmentsController : V1ApiController
     }
 
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Assessment>))]
     public async Task<IActionResult> GetByCourseId([FromQuery] string courseId)
     {
         if (string.IsNullOrWhiteSpace(courseId))
@@ -92,6 +95,7 @@ public class AssessmentsController : V1ApiController
     }
 
     [HttpPut]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Assessment))]
     public async Task<IActionResult> Update(
         [FromQuery] Guid id,
         [FromBody] UpdateAssessmentRequest request)

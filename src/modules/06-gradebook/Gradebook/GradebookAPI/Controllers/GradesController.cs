@@ -20,6 +20,7 @@ public class GradesController : V1ApiController
     }
 
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(Grade))]
     public async Task<IActionResult> Create(
         [FromBody] CreateGradeRequest request)
     {
@@ -36,7 +37,7 @@ public class GradesController : V1ApiController
         }
 
         // Validate the score.
-        if (request.Score < 0 || request.Score > 100000)
+        if (request.Score is < 0 or > 100000)
         {
             return BadRequest(
                 "Score must be between 0 and 100000.");
@@ -44,8 +45,7 @@ public class GradesController : V1ApiController
 
         // Find the assessment being graded.
         var assessment = await _context.Assessments
-            .FirstOrDefaultAsync(
-                a => a.Id == request.AssessmentId);
+            .FirstOrDefaultAsync(a => a.Id == request.AssessmentId);
 
         if (assessment == null)
         {
@@ -95,9 +95,10 @@ public class GradesController : V1ApiController
             nameof(GetById),
             new { id = grade.Id },
             grade);
-            }
+    }
 
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Grade))]
     public async Task<IActionResult> GetById(Guid id)
     {
         if (id == Guid.Empty)
@@ -118,6 +119,7 @@ public class GradesController : V1ApiController
     }
 
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Grade>))]
     public async Task<IActionResult> GetByAssessmentId(Guid assessmentId)
     {
         // Validate the assessment identifier.
@@ -146,6 +148,7 @@ public class GradesController : V1ApiController
     }
 
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Grade>))]
     public async Task<IActionResult> GetByStudentId(string studentId)
     {
         // Validate the student identifier.
@@ -168,6 +171,7 @@ public class GradesController : V1ApiController
     }
 
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Grade>))]
     public async Task<IActionResult> GetByCourseId(string courseId)
     {
         // Validate the course identifier.
@@ -198,6 +202,7 @@ public class GradesController : V1ApiController
     }
 
     [HttpPut]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Grade))]
     public async Task<IActionResult> Update(
         Guid id,
         [FromBody] UpdateGradeRequest request)
@@ -209,7 +214,7 @@ public class GradesController : V1ApiController
         }
 
         // Validate the score.
-        if (request.Score < 0 || request.Score > 100000)
+        if (request.Score is < 0 or > 100000)
         {
             return BadRequest("Score must be between 0 and 100000.");
         }
